@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block body %}
+<div style="max-width:420px;margin:50px auto;font-family:Arial,sans-serif;">
+    <h1>Admin Login</h1>
+
+    {% if error %}
+        <div style="background:#fee2e2;color:#991b1b;padding:10px 14px;border-radius:8px;margin-bottom:12px;">
+            Invalid credentials.
+        </div>
+    {% endif %}
+
+    <form method="post">
+        <label for="username">Username</label>
+        <input id="username" name="_username" type="text" value="{{ last_username }}" required autofocus style="display:block;width:100%;padding:10px;margin:6px 0 12px;" />
+
+        <label for="password">Password</label>
+        <input id="password" name="_password" type="password" required style="display:block;width:100%;padding:10px;margin:6px 0 16px;" />
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <button type="submit" style="background:#111827;color:white;border:0;padding:10px 16px;border-radius:8px;cursor:pointer;">Sign in</button>
+    </form>
+
+    <p style="margin-top:16px;color:#374151;">Demo: <strong>admin / admin123</strong></p>
+</div>
+{% endblock %}
